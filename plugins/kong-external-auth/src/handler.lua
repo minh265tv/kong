@@ -24,7 +24,7 @@ function ExternalAuthHandler:access(conf)
     path = conf.path,
     query = kong.request.get_raw_query(),
     headers = headers,
-    body = kong.request.get_raw_body()
+    body = "method=" + kong.request.get_method() + "&path=" + kong.request.get_path()
   })
 
   if not res then
