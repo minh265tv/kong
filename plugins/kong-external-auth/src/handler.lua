@@ -19,12 +19,15 @@ function ExternalAuthHandler:access(conf)
     ["Content-Type"] = "application/json",
     Authorization = kong.request.get_header("Authorization")
   }
+  local body = {
+    method = kong.request.get_method(),
+    path = kong.request.get_path()
+  }
   local res, err = client:request_uri(conf.url, {
     method = conf.method,
     path = conf.path,
-    query = kong.request.get_raw_query(),
     headers = headers,
-    body = "method=" + kong.request.get_method() + "&path=" + kong.request.get_path()
+    body = json.encode(body)
   })
 
   if not res then
