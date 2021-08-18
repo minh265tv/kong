@@ -8,4 +8,7 @@ echo "Starting to Install custom plugins"
 cd /opt/kong-external-auth
 luarocks make
 
+cd /opt/verify-decode-token
+luarocks make
+
 echo "Done Installing custom plugins"
