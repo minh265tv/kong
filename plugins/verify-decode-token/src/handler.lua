@@ -7,7 +7,7 @@ local kong = kong
 local ExternalAuthHandler = BasePlugin:extend()
 
 function ExternalAuthHandler:new()
-  ExternalAuthHandler.super.new(self, "external-auth")
+  ExternalAuthHandler.super.new(self, "verify-token")
 end
 
 function ExternalAuthHandler:access(conf)

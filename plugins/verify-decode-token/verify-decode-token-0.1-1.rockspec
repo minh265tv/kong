@@ -1,8 +1,8 @@
-package = "verify-decoded-token"
+package = "verify-decode-token"
 version = "0.1-1"
 supported_platforms = {"linux", "macosx"}
 source = {
-  url = "git://github.com/minhnq/verify-decoded-token",
+  url = "git://github.com/minhnq/verify-decode-token",
   tag = "master"
 }
 description = {
@@ -17,7 +17,7 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ["kong.plugins.verify-decoded-token.handler"] = "src/handler.lua",
-    ["kong.plugins.verify-decoded-token.schema"] = "src/schema.lua"
+    ["kong.plugins.verify-decode-token.handler"] = "src/handler.lua",
+    ["kong.plugins.verify-decode-token.schema"] = "src/schema.lua"
   }
 }
