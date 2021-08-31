@@ -33,7 +33,13 @@ function ExternalAuthHandler:access(conf)
   end
 
   if res.status == 200 then
-    kong.service.request.set_header('x-token-data', json.encode(json.decode(res.body).data))
+    local data = json.decode(res.body)
+
+    if data.status == 0 then
+      kong.service.request.set_header('x-token-data', json.encode(data.data))
+    else
+      return kong.response.exit(401, data)
+    end
   else
     return kong.response.exit(401, json.decode(res.body))
   end
